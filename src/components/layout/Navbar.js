@@ -33,7 +33,6 @@ const Navbar = () => {
   )
 }
 
-export default Navbar
 const NavContainer = styled.nav`
   height: 5rem;
   display: flex;
@@ -52,7 +51,6 @@ const NavContainer = styled.nav`
     img {
       width: 175px;
       margin-left: -15px;
-      font-size: 2rem;
     }
   }
   .nav-toggle {
@@ -67,7 +65,9 @@ const NavContainer = styled.nav`
   .nav-links {
     display: none;
   }
-
+  .cart-btn-wrapper {
+    display: none;
+  }
   @media (min-width: 600px) {
     .nav-toggle {
       display: none;
@@ -81,7 +81,6 @@ const NavContainer = styled.nav`
       display: flex;
       justify-content: center;
       li {
-        list-style-type: none;
         margin: 0 0.5rem;
       }
       a {
@@ -89,8 +88,6 @@ const NavContainer = styled.nav`
         font-size: 1rem;
         text-transform: capitalize;
         letter-spacing: var(--spacing);
-        text-decoration: none;
-
         padding: 0.5rem;
         &:hover {
           border-bottom: 2px solid var(--clr-primary-7);
@@ -102,3 +99,4 @@ const NavContainer = styled.nav`
     }
   }
 `
+export default Navbar
