@@ -9,17 +9,16 @@ import CartButtons from '../CartButtons'
 import { useProductsContext } from '../../context/products_context'
 
 const Sidebar = () => {
-  const data = useProductsContext()
-  console.log(data)
-  const isSidebarOpen = true
+  const { isSidebarOpen, closeSidebar } = useProductsContext()
+
   return (
     <SidebarContainer>
       <aside
-        className={`${isSidebarOpen ? 'sidebar show-sidebar' : 'show-sidebar'}`}
+        className={`${isSidebarOpen ? 'sidebar show-sidebar' : 'sidebar'}`}
       >
         <div className='sidebar-header'>
-          <img className='logo' src={nestLogo} alt='nest store' />
-          <button className='close-btn' type='button'>
+          <img src={nestLogo} className='logo' alt='comfy sloth' />
+          <button className='close-btn' type='button' onClick={closeSidebar}>
             <FaTimes />
           </button>
         </div>
@@ -27,12 +26,13 @@ const Sidebar = () => {
           {links.map(({ id, text, url }) => {
             return (
               <li key={id}>
-                <Link to={url}>{text}</Link>
+                <Link to={url} onClick={closeSidebar}>
+                  {text}
+                </Link>
               </li>
             )
           })}
         </ul>
-
         <CartButtons />
       </aside>
     </SidebarContainer>
@@ -103,7 +103,7 @@ const SidebarContainer = styled.div`
   .cart-btn-wrapper {
     margin: 2rem auto;
   }
-  @media screen and (min-width: 600px) {
+  @media screen and (min-width: 992px) {
     .sidebar {
       display: none;
     }

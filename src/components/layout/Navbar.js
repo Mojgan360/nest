@@ -5,28 +5,31 @@ import { FaBars } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import { links } from '../../utils/constants'
 import CartButtons from '../CartButtons'
+import { useProductsContext } from '../../context/products_context'
 
 const Navbar = () => {
-  const navLinks = links.map((item) => {
-    const { id, text, url } = item
-    return (
-      <li key={id}>
-        <Link to={url}>{text}</Link>
-      </li>
-    )
-  })
-
-  const logo = <img src={nestLogo} alt='nest store' />
+  const { openSidebar } = useProductsContext()
   return (
     <NavContainer>
       <div className='nav-center'>
         <div className='nav-header'>
-          <Link to='/'>{logo}</Link>
-          <button type='button' className='nav-toggle'>
+          <Link to='/'>
+            <img src={nestLogo} alt='nset store' />
+          </Link>
+          <button type='button' className='nav-toggle' onClick={openSidebar}>
             <FaBars />
           </button>
         </div>
-        <ul className='nav-links'>{navLinks}</ul>
+        <ul className='nav-links'>
+          {links.map((link) => {
+            const { id, text, url } = link
+            return (
+              <li key={id}>
+                <Link to={url}>{text}</Link>
+              </li>
+            )
+          })}
+        </ul>
         <CartButtons />
       </div>
     </NavContainer>
@@ -68,7 +71,7 @@ const NavContainer = styled.nav`
   .cart-btn-wrapper {
     display: none;
   }
-  @media (min-width: 600px) {
+  @media (min-width: 992px) {
     .nav-toggle {
       display: none;
     }
@@ -99,4 +102,5 @@ const NavContainer = styled.nav`
     }
   }
 `
+
 export default Navbar
