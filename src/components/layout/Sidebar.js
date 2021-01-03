@@ -2,12 +2,15 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { FaTimes } from 'react-icons/fa'
-import nestLogo from '../../assets/logo.png'
+import nestLogo from '../../assets/logo.svg'
 
 import { links } from '../../utils/constants'
 import CartButtons from '../CartButtons'
+import { useProductsContext } from '../../context/products_context'
 
 const Sidebar = () => {
+  const data = useProductsContext()
+  console.log(data)
   const isSidebarOpen = true
   return (
     <SidebarContainer>

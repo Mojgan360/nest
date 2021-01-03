@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import nestLogo from '../../assets/logo.png'
+import nestLogo from '../../assets/logo.svg'
 import { FaBars } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import { links } from '../../utils/constants'
@@ -11,7 +11,7 @@ const Navbar = () => {
     const { id, text, url } = item
     return (
       <li key={id}>
-        <Link path={url}>{text}</Link>
+        <Link to={url}>{text}</Link>
       </li>
     )
   })
@@ -22,7 +22,7 @@ const Navbar = () => {
       <div className='nav-center'>
         <div className='nav-header'>
           <Link to='/'>{logo}</Link>
-          <button type='button' className='nav-toggle' onClick=''>
+          <button type='button' className='nav-toggle'>
             <FaBars />
           </button>
         </div>
