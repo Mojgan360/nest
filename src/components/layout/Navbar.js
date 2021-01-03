@@ -4,6 +4,7 @@ import nestLogo from '../../assets/logo.png'
 import { FaBars } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import { links } from '../../utils/constants'
+import CartButtons from '../CartButtons'
 
 const Navbar = () => {
   const navLinks = links.map((item) => {
@@ -26,6 +27,7 @@ const Navbar = () => {
           </button>
         </div>
         <ul className='nav-links'>{navLinks}</ul>
+        <CartButtons />
       </div>
     </NavContainer>
   )
@@ -66,7 +68,7 @@ const NavContainer = styled.nav`
     display: none;
   }
 
-  @media (min-width: 992px) {
+  @media (min-width: 600px) {
     .nav-toggle {
       display: none;
     }
@@ -94,6 +96,9 @@ const NavContainer = styled.nav`
           border-bottom: 2px solid var(--clr-primary-7);
         }
       }
+    }
+    .cart-btn-wrapper {
+      display: grid;
     }
   }
 `
