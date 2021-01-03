@@ -1,11 +1,43 @@
 import './App.css'
-
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { Home, Products, SingleProduct, About, Error } from './pages'
+import { Navbar, Sidebar, Footer } from './components'
 function App() {
   return (
     <div className='App'>
-      <h1>NEST Store</h1>
+      <Router>
+        <Navbar />
+        <Sidebar />
+        <Switch>
+          <Route exact path='/'>
+            <Home />
+          </Route>
+
+          <Route exact path='/products'>
+            <Products />
+          </Route>
+
+          <Route exact path='/products/:id' children={<SingleProduct />}>
+            <SingleProduct />
+          </Route>
+
+          <Route exact path='/about'>
+            <About />
+          </Route>
+
+          <Route path='*'>
+            <Error />
+          </Route>
+        </Switch>
+        <Footer />
+      </Router>
     </div>
   )
 }
 
 export default App
+// <Home />
+//   <Products />
+//   <SingleProduct />
+//   <About />
+//   <Error />
