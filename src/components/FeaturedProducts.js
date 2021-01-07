@@ -1,9 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useProductsContext } from '../context/products_context'
+import Error from './Error'
 
 const FeaturedProducts = () => {
-  const { featured_products: featured } = useProductsContext()
+  const {
+    featured_products: featured,
+    products_error: error,
+  } = useProductsContext()
+  if (error) {
+    ;<Error />
+  }
   return (
     <Wrapper>
       FeaturedProducts

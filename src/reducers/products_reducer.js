@@ -7,19 +7,23 @@ import {
 } from '../actions'
 
 const products_reducer = (state, action) => {
-  if (action.type === SIDEBAR_OPEN) {
+  const { type, payload } = action
+  if (type === SIDEBAR_OPEN) {
     return { ...state, isSidebarOpen: true }
   }
-  if (action.type === SIDEBAR_CLOSE) {
+  if (type === SIDEBAR_CLOSE) {
     return { ...state, isSidebarOpen: false }
   }
-  if (action.type === GET_PRODUCTS_BEGIN) {
+  if (type === GET_PRODUCTS_BEGIN) {
     return { ...state, products_loading: true }
   }
-  if (action.type === GET_PRODUCTS_SUCCESS) {
-    const featured_products = action.payload.filter(
+  if (type === GET_PRODUCTS_SUCCESS) {
+    const featured_products = payload.filter(
       (product) => product.featured === true
     )
+    if (type === GET_PRODUCTS_ERROR) {
+      return { ...state, products_loading: false, products_error: true }
+    }
     return {
       ...state,
       products_loading: false,

@@ -1,6 +1,5 @@
 import React, { useContext, useReducer } from 'react'
 import axios from 'axios'
-
 import { products_url as url } from '../utils/constants'
 import reducer from '../reducers/products_reducer'
 import {
@@ -37,7 +36,9 @@ export const ProductsProvider = ({ children }) => {
       const response = await axios.get(url)
       const products = response.data
       dispatch({ type: GET_PRODUCTS_SUCCESS, payload: products })
-    } catch (error) {}
+    } catch (error) {
+      dispatch({ type: GET_PRODUCTS_ERROR })
+    }
   }
 
   React.useEffect(() => {
