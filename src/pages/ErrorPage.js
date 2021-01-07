@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-
 const ErrorPage = () => {
   return (
     <Wrapper className='page-100'>
@@ -30,4 +29,5 @@ const Wrapper = styled.main`
     margin-bottom: 2rem;
   }
 `
+
 export default ErrorPage

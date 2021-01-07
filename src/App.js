@@ -27,7 +27,6 @@ function App() {
           <Route exact path='/cart'>
             <Cart />
           </Route>
-
           <Route path='*'>
             <Error />
           </Route>
