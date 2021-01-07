@@ -21,9 +21,6 @@ const products_reducer = (state, action) => {
     const featured_products = payload.filter(
       (product) => product.featured === true
     )
-    if (type === GET_PRODUCTS_ERROR) {
-      return { ...state, products_loading: false, products_error: true }
-    }
     return {
       ...state,
       products_loading: false,
@@ -31,8 +28,8 @@ const products_reducer = (state, action) => {
       featured_products,
     }
   }
-  if (action.type === GET_PRODUCTS_ERROR) {
-    return { ...state }
+  if (type === GET_PRODUCTS_ERROR) {
+    return { ...state, products_loading: false, products_error: true }
   }
 
   return state

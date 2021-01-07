@@ -1,21 +1,23 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useProductsContext } from '../context/products_context'
+import Loading from './Loading'
 import Error from './Error'
 
 const FeaturedProducts = () => {
   const {
     featured_products: featured,
+    products_loading: loading,
     products_error: error,
   } = useProductsContext()
-  if (error) {
-    ;<Error />
-  }
+  if (loading) return <Loading />
+  if (error) return <Error />
+
   return (
     <Wrapper>
       FeaturedProducts
-      {featured.map(({ name }) => {
-        return <p>{name}</p>
+      {featured.map(({ id, name }) => {
+        return <p key={id}>{name}</p>
       })}
     </Wrapper>
   )
