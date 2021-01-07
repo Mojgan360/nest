@@ -1,6 +1,14 @@
 import './App.css'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import { Home, Products, SingleProduct, About, Cart, Error } from './pages'
+import {
+  Home,
+  Products,
+  SingleProduct,
+  About,
+  Cart,
+  Error,
+  CheckoutPage,
+} from './pages'
 import { Navbar, Sidebar, Footer } from './components'
 function App() {
   return (
@@ -12,17 +20,17 @@ function App() {
           <Route exact path='/'>
             <Home />
           </Route>
-
           <Route exact path='/products'>
             <Products />
           </Route>
-
           <Route exact path='/products/:id' children={<SingleProduct />}>
             <SingleProduct />
           </Route>
-
           <Route exact path='/about'>
             <About />
+          </Route>
+          <Route exact path='/checkout'>
+            <CheckoutPage />
           </Route>
           <Route exact path='/cart'>
             <Cart />
