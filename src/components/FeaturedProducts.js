@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { useProductsContext } from '../context/products_context'
 import Loading from './Loading'
 import Error from './Error'
+import Product from './Product'
 
 const FeaturedProducts = () => {
   const {
@@ -14,11 +15,16 @@ const FeaturedProducts = () => {
   if (error) return <Error />
 
   return (
-    <Wrapper>
-      FeaturedProducts
-      {featured.map(({ id, name }) => {
-        return <p key={id}>{name}</p>
-      })}
+    <Wrapper className='section'>
+      <div className='title'>
+        <h2>featured products</h2>
+        <div className='underline'></div>
+      </div>
+      <div className='section-center featured'>
+        {featured.slice(0, 3).map(({ id, name }) => {
+          return <Product key={id} />
+        })}
+      </div>
     </Wrapper>
   )
 }

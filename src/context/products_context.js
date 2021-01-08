@@ -42,7 +42,7 @@ export const ProductsProvider = ({ children }) => {
   }
 
   React.useEffect(() => {
-    fetchProduct(`${url}s`)
+    fetchProduct(url)
   }, [])
 
   return (
