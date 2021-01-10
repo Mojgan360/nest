@@ -1,6 +1,6 @@
 import React, { useContext, useReducer } from 'react'
-import axios from 'axios'
-import { products_url as url } from '../utils/constants'
+// import axios from 'axios'
+// import { products_url as url } from '../utils/constants'
 import reducer from '../reducers/products_reducer'
 import {
   SIDEBAR_OPEN,
@@ -9,6 +9,11 @@ import {
   GET_PRODUCTS_SUCCESS,
   GET_PRODUCTS_ERROR,
 } from '../actions'
+import Client from '../contentful'
+
+Client.getEntries({
+  content_type: 'nestStoreApp',
+}).then((response) => console.log(response.items))
 
 const initialState = {
   isSidebarOpen: false,
@@ -23,18 +28,34 @@ const ProductsContext = React.createContext()
 export const ProductsProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState)
 
+  const formatData = (items) => {
+    let tempItems = items.map((item) => {
+      let id = item.sys.id
+      let images = item.fields.images.map((image) => image.fields.file.url)
+
+      // images = images.map((image) => image.fields.file.url)
+
+      let furniture = { ...item.fields, images, id }
+      return furniture
+    })
+    return tempItems
+  }
+
   const openSidebar = () => {
     dispatch({ type: SIDEBAR_OPEN })
   }
+
   const closeSidebar = () => {
     dispatch({ type: SIDEBAR_CLOSE })
   }
-  const fetchProduct = async (url) => {
-    dispatch({ type: GET_PRODUCTS_BEGIN })
 
+  const fetchProduct = async () => {
+    dispatch({ type: GET_PRODUCTS_BEGIN })
     try {
-      const response = await axios.get(url)
-      const products = response.data
+      const response = await Client.getEntries({
+        content_type: 'nestStoreApp',
+      })
+      const products = formatData(response.items)
       dispatch({ type: GET_PRODUCTS_SUCCESS, payload: products })
     } catch (error) {
       dispatch({ type: GET_PRODUCTS_ERROR })
@@ -42,7 +63,8 @@ export const ProductsProvider = ({ children }) => {
   }
 
   React.useEffect(() => {
-    fetchProduct(url)
+    fetchProduct()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

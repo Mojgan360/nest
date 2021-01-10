@@ -3,12 +3,16 @@ import styled from 'styled-components'
 import { FaSearch } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import { formatPrice } from '../utils/helpers'
+import defaultImg from '../assets/hero-bcg.jpeg'
 
-const Product = ({ id, name, price, image }) => {
+const Product = ({ id, name, price, images }) => {
+  console.log('Product helooo')
   return (
     <Wrapper>
       <div className='container'>
-        <img src={image} alt={name} />
+        {/* <img src={images} alt='product single' /> */}
+
+        <img src={images[0] || defaultImg} alt='product single' />
         <Link to={`/products/${id}`} className='link'>
           <FaSearch />
         </Link>

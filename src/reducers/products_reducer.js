@@ -8,10 +8,10 @@ import {
 
 const products_reducer = (state, action) => {
   const { type, payload } = action
-  if (type === SIDEBAR_OPEN) {
+  if (action.type === SIDEBAR_OPEN) {
     return { ...state, isSidebarOpen: true }
   }
-  if (type === SIDEBAR_CLOSE) {
+  if (action.type === SIDEBAR_CLOSE) {
     return { ...state, isSidebarOpen: false }
   }
   if (type === GET_PRODUCTS_BEGIN) {
