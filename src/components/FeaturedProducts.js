@@ -5,12 +5,11 @@ import { useProductsContext } from '../context/products_context'
 import Loading from './Loading'
 import Error from './Error'
 import Product from './Product'
-import AlertContext from '../context/alert/alertContext'
+// import AlertContext from '../context/alert/alertContext'
 
 const FeaturedProducts = (props) => {
-  const alertContext = useContext(AlertContext)
-
-  const { setAlert } = alertContext
+  // const alertContext = useContext(AlertContext)
+  // const { setAlert } = alertContext
 
   const {
     featured_products: featured,

@@ -7,6 +7,9 @@ import {
   GET_PRODUCTS_BEGIN,
   GET_PRODUCTS_SUCCESS,
   GET_PRODUCTS_ERROR,
+  GET_SINGLE_PRODUCT_BEGIN,
+  GET_SINGLE_PRODUCT_SUCCESS,
+  GET_SINGLE_PRODUCT_ERROR,
 } from '../actions'
 
 import Client from '../contentful'
@@ -50,7 +53,7 @@ export const ProductsProvider = ({ children }) => {
     dispatch({ type: SIDEBAR_CLOSE })
   }
 
-  const fetchProduct = async () => {
+  const fetchProducts = async () => {
     dispatch({ type: GET_PRODUCTS_BEGIN })
     try {
       const response = await Client.getEntries({
@@ -63,14 +66,30 @@ export const ProductsProvider = ({ children }) => {
       dispatch({ type: GET_PRODUCTS_ERROR })
     }
   }
+  const fetchSingleProduct = async () => {
+    dispatch({ type: GET_SINGLE_PRODUCT_BEGIN })
+
+    try {
+      const response = await Client.getEntries({
+        content_type: 'nestStoreApp',
+      })
+      const singleProducr = formatData(response.items)
+
+      dispatch({ type: GET_SINGLE_PRODUCT_SUCCESS, payload: singleProducr })
+    } catch (error) {
+      dispatch({ type: GET_SINGLE_PRODUCT_ERROR })
+    }
+  }
 
   React.useEffect(() => {
-    fetchProduct()
+    fetchProducts() //fetch product.featured===true
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
-    <ProductsContext.Provider value={{ ...state, openSidebar, closeSidebar }}>
+    <ProductsContext.Provider
+      value={{ ...state, openSidebar, closeSidebar, fetchSingleProduct }}
+    >
       {children}
     </ProductsContext.Provider>
   )
