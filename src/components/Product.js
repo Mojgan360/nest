@@ -6,12 +6,9 @@ import { formatPrice } from '../utils/helpers'
 import defaultImg from '../assets/hero-bcg.jpeg'
 
 const Product = ({ id, name, price, images }) => {
-  console.log('Product helooo')
   return (
     <Wrapper>
       <div className='container'>
-        {/* <img src={images} alt='product single' /> */}
-
         <img src={images[0] || defaultImg} alt='product single' />
         <Link to={`/products/${id}`} className='link'>
           <FaSearch />
