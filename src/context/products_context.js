@@ -13,10 +13,11 @@ import {
 } from '../actions'
 
 import Client from '../contentful'
+import { getProducts } from '../utils/helpers'
 
-// Client.getEntries({
-//   content_type: 'nestStoreApp',
-// }).then((response) => console.log(response.items))
+Client.getEntries({
+  content_type: 'nestStoreApp',
+}).then((response) => console.log(response))
 
 const initialState = {
   isSidebarOpen: false,
@@ -60,22 +61,22 @@ export const ProductsProvider = ({ children }) => {
         content_type: 'nestStoreApp',
       })
       const products = formatData(response.items)
+      // const products = response.items
 
       dispatch({ type: GET_PRODUCTS_SUCCESS, payload: products })
     } catch (error) {
       dispatch({ type: GET_PRODUCTS_ERROR })
     }
   }
-  const fetchSingleProduct = async () => {
+
+  const fetchSingleProduct = async (id) => {
     dispatch({ type: GET_SINGLE_PRODUCT_BEGIN })
 
     try {
-      const response = await Client.getEntries({
-        content_type: 'nestStoreApp',
-      })
-      const singleProducr = formatData(response.items)
+      const res = await Client.getEntry(id)
+      const singleProduct = res.fields
 
-      dispatch({ type: GET_SINGLE_PRODUCT_SUCCESS, payload: singleProducr })
+      dispatch({ type: GET_SINGLE_PRODUCT_SUCCESS, payload: singleProduct })
     } catch (error) {
       dispatch({ type: GET_SINGLE_PRODUCT_ERROR })
     }
@@ -88,7 +89,12 @@ export const ProductsProvider = ({ children }) => {
 
   return (
     <ProductsContext.Provider
-      value={{ ...state, openSidebar, closeSidebar, fetchSingleProduct }}
+      value={{
+        ...state,
+        openSidebar,
+        closeSidebar,
+        fetchSingleProduct,
+      }}
     >
       {children}
     </ProductsContext.Provider>
