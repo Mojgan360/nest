@@ -5,7 +5,7 @@ import {
   GET_PRODUCTS_SUCCESS,
   GET_PRODUCTS_ERROR,
 } from '../actions'
-
+      
 const products_reducer = (state, action) => {
   const { type, payload } = action
   if (action.type === SIDEBAR_OPEN) {

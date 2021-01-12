@@ -11,7 +11,7 @@ Variables
   --clr-primary-3: hsl(22, 28%, 37%);
   --clr-primary-4: hsl(22, 28%, 45%);
   /* primary/main color */
-  --clr-primary-5: hsl(22, 31%, 52%);
+  --clr-primary-5: hsl(333, 88%, 41%);
   /* lighter shades of primary color */
   --clr-primary-6: hsl(22, 31%, 60%);
   --clr-primary-7: hsl(22, 31%, 67%);
@@ -203,4 +203,44 @@ p {
 }
 .page {
   min-height: calc(100vh - (20vh + 10rem));
+}
+/* alert */
+
+.alert {
+  padding: 0.7rem;
+  margin: 1rem 0;
+  opacity: 0.9;
+  background: var(--light-color);
+  color: #333;
+}
+
+.alert-primary {
+  background: var(--primary-color);
+  color: #fff;
+}
+
+.alert-light {
+  background: var(--light-color);
+  color: #333;
+}
+
+.alert-dark {
+  background: var(--dark-color);
+  color: #fff;
+}
+
+.alert-danger {
+  background: var(--danger-color);
+  color: #fff;
+}
+
+.alert-success {
+  background: var(--success-color);
+  color: #fff;
+}
+
+.alert-white {
+  background: #fff;
+  color: #333;
+  border: #ccc solid 1px;
 }

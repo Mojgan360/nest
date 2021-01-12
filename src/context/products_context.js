@@ -1,6 +1,5 @@
 import React, { useContext, useReducer } from 'react'
-// import axios from 'axios'
-// import { products_url as url } from '../utils/constants'
+
 import reducer from '../reducers/products_reducer'
 import {
   SIDEBAR_OPEN,
@@ -9,11 +8,12 @@ import {
   GET_PRODUCTS_SUCCESS,
   GET_PRODUCTS_ERROR,
 } from '../actions'
+
 import Client from '../contentful'
 
-Client.getEntries({
-  content_type: 'nestStoreApp',
-}).then((response) => console.log(response.items))
+// Client.getEntries({
+//   content_type: 'nestStoreApp',
+// }).then((response) => console.log(response.items))
 
 const initialState = {
   isSidebarOpen: false,
@@ -21,6 +21,9 @@ const initialState = {
   products_error: false,
   products: [],
   featured_products: [],
+  single_product_loading: false,
+  single_product_error: false,
+  single_product: {},
 }
 
 const ProductsContext = React.createContext()
@@ -32,8 +35,6 @@ export const ProductsProvider = ({ children }) => {
     let tempItems = items.map((item) => {
       let id = item.sys.id
       let images = item.fields.images.map((image) => image.fields.file.url)
-
-      // images = images.map((image) => image.fields.file.url)
 
       let furniture = { ...item.fields, images, id }
       return furniture
@@ -56,6 +57,7 @@ export const ProductsProvider = ({ children }) => {
         content_type: 'nestStoreApp',
       })
       const products = formatData(response.items)
+
       dispatch({ type: GET_PRODUCTS_SUCCESS, payload: products })
     } catch (error) {
       dispatch({ type: GET_PRODUCTS_ERROR })

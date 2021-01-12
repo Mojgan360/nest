@@ -1,18 +1,25 @@
-import React from 'react'
+import React, { useState, useContext, useEffect } from 'react'
+
 import styled from 'styled-components'
 import { useProductsContext } from '../context/products_context'
 import Loading from './Loading'
 import Error from './Error'
 import Product from './Product'
+import AlertContext from '../context/alert/alertContext'
 
-const FeaturedProducts = () => {
+const FeaturedProducts = (props) => {
+  const alertContext = useContext(AlertContext)
+
+  const { setAlert } = alertContext
+
   const {
     featured_products: featured,
     products_loading: loading,
     products_error: error,
   } = useProductsContext()
+
   if (loading) return <Loading />
-  if (error) return <Error />
+  if (error) return <Error msg='Something gone wrong...' />
 
   return (
     <Wrapper className='section'>

@@ -10,11 +10,14 @@ import {
   CheckoutPage,
 } from './pages'
 import { Navbar, Sidebar, Footer } from './components'
+import Alert from './components/Alert'
+
 function App() {
   return (
     <div className='App'>
       <Router>
         <Navbar />
+        <Alert />
         <Sidebar />
         <Switch>
           <Route exact path='/'>
