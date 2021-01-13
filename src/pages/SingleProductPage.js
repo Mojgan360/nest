@@ -35,6 +35,7 @@ const SingleProductPage = () => {
 
   return (
     <Wrapper>
+      <PageHero title={name} product />
       <h1>Single Product {name}</h1>
     </Wrapper>
   )
