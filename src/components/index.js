@@ -7,6 +7,7 @@ import FeaturedProducts from './FeaturedProducts'
 import Services from './Services'
 import Contact from './Contact'
 import Error from './Error'
+import Loading from './Loading'
 
 export {
   Navbar,
@@ -18,4 +19,5 @@ export {
   Services,
   Contact,
   Error,
+  Loading,
 }

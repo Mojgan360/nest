@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
 import styled from 'styled-components'
-import { PageHero } from '../components'
+import { Loading, Error, PageHero } from '../components'
 
 import { useProductsContext } from '../context/products_context'
 
@@ -16,9 +16,20 @@ const SingleProductPage = () => {
   } = useProductsContext()
 
   useEffect(() => {
-    fetchSingleProduct(id)
+    fetchSingleProduct(`${id}`)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id])
-  //    stock, stars,reviews,id: sku,
+  useEffect(() => {
+    // console.log(error)
+    if (error)
+      setTimeout(() => {
+        history.push('/')
+      }, 3000)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [error])
+  if (loading) return <Loading />
+  if (error) return <Error msg='Somthing Not working..., Try again' />
+
   const { name } = product
   console.log(product)
 
