@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import Client from '../contentful'
 
 import {
   Loading,

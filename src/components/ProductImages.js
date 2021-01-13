@@ -3,7 +3,6 @@ import styled from 'styled-components'
 
 const ProductImages = ({ images = [{ url: '' }] }) => {
   const [main, setMain] = useState(images[0])
-  console.log(main.fields)
 
   return (
     <Wrapper>
@@ -14,10 +13,11 @@ const ProductImages = ({ images = [{ url: '' }] }) => {
       <div className='gallery'>
         {main.fields &&
           images.map((image, index) => {
+            console.log(image)
             return (
               <img
                 src={image.fields.file.url}
-                alt={image.filename}
+                alt={image.fields.title}
                 key={index}
                 onClick={() => setMain(images[index])}
                 className={`${
