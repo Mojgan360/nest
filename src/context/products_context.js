@@ -13,11 +13,10 @@ import {
 } from '../actions'
 
 import Client from '../contentful'
-import { getProducts } from '../utils/helpers'
 
-Client.getEntries({
-  content_type: 'nestStoreApp',
-}).then((response) => console.log(response))
+// Client.getEntries({
+//   content_type: 'nestStoreApp',
+// }).then((response) => console.log(response))
 
 const initialState = {
   isSidebarOpen: false,
