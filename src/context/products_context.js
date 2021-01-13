@@ -14,9 +14,9 @@ import {
 
 import Client from '../contentful'
 
-// Client.getEntries({
-//   content_type: 'nestStoreApp',
-// }).then((response) => console.log(response))
+Client.getEntries({
+  content_type: 'nestStoreApp',
+}).then((response) => console.log(response))
 
 const initialState = {
   isSidebarOpen: false,

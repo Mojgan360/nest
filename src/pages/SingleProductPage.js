@@ -2,8 +2,16 @@ import React, { useEffect } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import Client from '../contentful'
 
-import { Loading, Error, PageHero, ProductImages, Stars } from '../components'
+import {
+  Loading,
+  Error,
+  PageHero,
+  ProductImages,
+  Stars,
+  AddToCart,
+} from '../components'
 
 import { useProductsContext } from '../context/products_context'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
@@ -32,9 +40,10 @@ const SingleProductPage = () => {
   }, [error])
   if (loading) return <Loading />
   if (error) return <Error msg='Somthing Not working..., Try again' />
+  product['sku'] = id
 
   const {
-    id: sku,
+    sku,
     name,
     price,
     company,
@@ -42,7 +51,7 @@ const SingleProductPage = () => {
     description,
     shipping,
     stock,
-    des,
+    images,
   } = product
 
   return (
@@ -53,13 +62,27 @@ const SingleProductPage = () => {
           back to products
         </Link>
         <div className=' product-center'>
-          <ProductImages />
+          <ProductImages images={images} />
           <section className='content'>
             <h2>{name}</h2>
             <Stars />
             <h5 className='price'> {price}</h5>
 
             <h5> {documentToReactComponents(description)} </h5>
+            <p className='info'>
+              <span>Available : </span>
+              {stock > 0 ? 'In stock' : 'out of stock'}
+            </p>
+            <p className='info'>
+              <span>SKU : </span>
+              {sku}
+            </p>
+            <p className='info'>
+              <span>Brand : </span>
+              {company}
+            </p>
+            <hr />
+            {stock > 0 && <AddToCart product={product} />}
           </section>
         </div>
       </div>

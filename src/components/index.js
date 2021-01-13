@@ -10,6 +10,8 @@ import Error from './Error'
 import Loading from './Loading'
 import ProductImages from './ProductImages'
 import Stars from './Stars'
+import AddToCart from './AddToCart'
+
 export {
   Navbar,
   Sidebar,
@@ -23,4 +25,5 @@ export {
   Loading,
   ProductImages,
   Stars,
+  AddToCart,
 }
