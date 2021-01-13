@@ -8,7 +8,8 @@ import Services from './Services'
 import Contact from './Contact'
 import Error from './Error'
 import Loading from './Loading'
-
+import ProductImages from './ProductImages'
+import Stars from './Stars'
 export {
   Navbar,
   Sidebar,
@@ -20,4 +21,6 @@ export {
   Contact,
   Error,
   Loading,
+  ProductImages,
+  Stars,
 }
