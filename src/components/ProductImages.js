@@ -6,14 +6,12 @@ const ProductImages = ({ images = [{ url: '' }] }) => {
 
   return (
     <Wrapper>
-      <h3>Product Image</h3>
       {main.fields && (
         <img src={main.fields.file.url} alt='main img' className='main' />
       )}
       <div className='gallery'>
         {main.fields &&
           images.map((image, index) => {
-            console.log(image)
             return (
               <img
                 src={image.fields.file.url}

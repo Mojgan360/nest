@@ -51,8 +51,10 @@ const SingleProductPage = () => {
     shipping,
     stock,
     images,
+    stars,
+    review,
   } = product
-
+  // console.log(product)
   return (
     <Wrapper>
       <PageHero title={name} product />
@@ -64,7 +66,7 @@ const SingleProductPage = () => {
           <ProductImages images={images} />
           <section className='content'>
             <h2>{name}</h2>
-            <Stars />
+            <Stars stars={stars} review={review} />
             <h5 className='price'> {price}</h5>
 
             <h5> {documentToReactComponents(description)} </h5>
