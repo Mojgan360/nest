@@ -19,9 +19,7 @@ const AddToCart = ({ product }) => {
                   mainColor === color ? 'color-btn active' : 'color-btn'
                 }`}
                 onClick={() => setMainColor(color)}
-              >
-                {index}
-              </button>
+              ></button>
             )
           })}
         </div>
