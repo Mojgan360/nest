@@ -1,6 +1,6 @@
 import React from 'react'
 
-const AmountButtons = () => {
+const AmountButtons = ({ amount, increase, decrease }) => {
   return (
     <div>
       <h2>Amount Buttons</h2>
