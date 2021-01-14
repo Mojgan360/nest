@@ -5,11 +5,27 @@ import AmountButtons from './AmountButtons'
 import { Link } from 'react-router-dom'
 
 const AddToCart = ({ product }) => {
-  const { colors } = product
+  const { stock, colors } = product
   const [mainColor, setMainColor] = useState(colors[0])
   const [amount, setAmount] = useState(1)
-  const increase = () => {}
-  const decrease = () => {}
+  const increase = () => {
+    setAmount((oldAmount) => {
+      let tmpAmount = oldAmount + 1
+      if (tmpAmount > stock) {
+        tmpAmount = stock
+      }
+      return tmpAmount
+    })
+  }
+  const decrease = () => {
+    setAmount((oldAmount) => {
+      let tmpAmount = oldAmount - 1
+      if (tmpAmount < 1) {
+        tmpAmount = 1
+      }
+      return tmpAmount
+    })
+  }
   return (
     <Wrapper>
       <div className='colors'>
