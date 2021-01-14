@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Product from './Product'
 
-const GridViews = ({ products }) => {
+const GridView = ({ products }) => {
   return (
     <Wrapper>
       <div className='products-container'>
@@ -36,4 +36,4 @@ const Wrapper = styled.section`
   }
 `
 
-export default GridViews
+export default GridView
