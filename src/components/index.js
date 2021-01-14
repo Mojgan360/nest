@@ -11,6 +11,9 @@ import Loading from './Loading'
 import ProductImages from './ProductImages'
 import Stars from './Stars'
 import AddToCart from './AddToCart'
+import ProductsList from './ProductsList'
+import Sort from './Sort'
+import Filters from './Filters'
 
 export {
   Navbar,
@@ -26,4 +29,7 @@ export {
   ProductImages,
   Stars,
   AddToCart,
+  ProductsList,
+  Sort,
+  Filters,
 }
