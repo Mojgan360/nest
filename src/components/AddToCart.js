@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { FaCheck } from 'react-icons/fa'
+import AmountButtons from './AmountButtons'
 
 const AddToCart = ({ product }) => {
   const { id, stock, colors } = product
@@ -27,6 +28,7 @@ const AddToCart = ({ product }) => {
           })}
         </div>
       </div>
+      <AmountButtons />
     </Wrapper>
   )
 }
