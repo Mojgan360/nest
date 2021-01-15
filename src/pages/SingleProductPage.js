@@ -13,7 +13,6 @@ import {
 } from '../components'
 
 import { useProductsContext } from '../context/products_context'
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 
 const SingleProductPage = () => {
   const { id } = useParams()
@@ -47,14 +46,14 @@ const SingleProductPage = () => {
     price,
     company,
     // category,
-    description,
+    text,
     // shipping,
     stock,
     images,
     stars,
     review,
   } = product
-  // console.log(product)
+
   return (
     <Wrapper>
       <PageHero title={name} product />
@@ -69,7 +68,7 @@ const SingleProductPage = () => {
             <Stars stars={stars} review={review} />
             <h5 className='price'> {price}</h5>
 
-            <h5> {documentToReactComponents(description)} </h5>
+            <p>{text}</p>
             <p className='info'>
               <span>Available : </span>
               {stock > 0 ? 'In stock' : 'out of stock'}
