@@ -34,6 +34,7 @@ const ListView = ({ products }) => {
 const Wrapper = styled.section`
   display: grid;
   row-gap: 3rem;
+  text-align: left;
 
   img {
     width: 100%;

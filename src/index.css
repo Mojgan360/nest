@@ -204,8 +204,9 @@ p {
 .page {
   min-height: calc(100vh - (20vh + 10rem));
 }
-/* alert */
 
+/*
+//Alert
 .alert {
   padding: 0.7rem;
   margin: 1rem 0;
@@ -244,3 +245,4 @@ p {
   color: #333;
   border: #ccc solid 1px;
 }
+*/

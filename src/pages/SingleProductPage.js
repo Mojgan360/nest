@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import { formatPrice } from '../utils/helpers'
 
 import {
   Loading,
@@ -66,8 +67,7 @@ const SingleProductPage = () => {
           <section className='content'>
             <h2>{name}</h2>
             <Stars stars={stars} review={review} />
-            <h5 className='price'> {price}</h5>
-
+            <h5 className='price'>{formatPrice(price)}</h5>
             <p>{text}</p>
             <p className='info'>
               <span>Available : </span>
@@ -123,5 +123,4 @@ const Wrapper = styled.main`
     }
   }
 `
-
 export default SingleProductPage
