@@ -7,21 +7,26 @@ import styled from 'styled-components'
 const Sort = () => {
   const filterContext = useContext(FilterContext)
 
-  const { all_products: products, grid_view } = filterContext
+  const {
+    all_products: products,
+    grid_view,
+    setGridView,
+    setListView,
+  } = filterContext
   return (
     <Wrapper>
       <div className='btn-container'>
         <button
           type='button'
           className={`${grid_view ? 'active' : null}`}
-          // onClick={setGridView}
+          onClick={setGridView}
         >
           <BsFillGridFill />
         </button>
         <button
           type='button'
           className={`${!grid_view ? 'active' : null}`}
-          // onClick={setListView}
+          onClick={setListView}
         >
           <BsList />
         </button>
