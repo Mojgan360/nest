@@ -7,13 +7,14 @@ import {
   SET_GRIDVIEW,
   SET_LISTVIEW,
   UPDATE_SORT,
+  FILTER_PRODUCTS,
 } from '../../actions'
 
 const initialState = {
   filtered_products: [],
   all_products: [],
   grid_view: false,
-  sort: 'price-lowest-------------',
+  sort: 'all-products',
 }
 
 const FilterState = ({ children }) => {
@@ -37,6 +38,10 @@ const FilterState = ({ children }) => {
   useEffect(() => {
     dispatch({ type: LOAD_PRODUCTS, payload: products })
   }, [products])
+
+  useEffect(() => {
+    dispatch({ type: FILTER_PRODUCTS })
+  }, [products, state.sort])
 
   return (
     <FilterContext.Provider
