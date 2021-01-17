@@ -7,7 +7,8 @@ import {
   SET_GRIDVIEW,
   SET_LISTVIEW,
   UPDATE_SORT,
-  FILTER_PRODUCTS,
+  SORT_PRODUCTS,
+  UPDATE_FILTERS,
 } from '../../actions'
 
 const initialState = {
@@ -32,6 +33,15 @@ const FilterState = ({ children }) => {
 
   const [state, dispatch] = useReducer(filterReducer, initialState)
 
+  useEffect(() => {
+    dispatch({ type: LOAD_PRODUCTS, payload: products })
+  }, [products])
+
+  useEffect(() => {
+    // dispatch({ type: FILTER_PRODUCTS })
+    dispatch({ type: SORT_PRODUCTS })
+  }, [products, state.sort, state.filters])
+
   const setGridView = () => {
     dispatch({ type: SET_GRIDVIEW })
   }
@@ -44,18 +54,16 @@ const FilterState = ({ children }) => {
     const value = e.target.value
     dispatch({ type: UPDATE_SORT, payload: value })
   }
-
-  useEffect(() => {
-    dispatch({ type: LOAD_PRODUCTS, payload: products })
-  }, [products])
-
-  useEffect(() => {
-    dispatch({ type: FILTER_PRODUCTS })
-  }, [products, state.sort])
+  const updateFilters = (e) => {
+    const name = e.target.name
+    const value = e.target.value
+    // console.log(name, value)
+    dispatch({ type: UPDATE_FILTERS, payload: { name, value } })
+  }
 
   return (
     <FilterContext.Provider
-      value={{ ...state, setGridView, setListView, updateSort }}
+      value={{ ...state, setGridView, setListView, updateSort, updateFilters }}
     >
       {children}
     </FilterContext.Provider>

@@ -3,7 +3,8 @@ import {
   SET_GRIDVIEW,
   SET_LISTVIEW,
   UPDATE_SORT,
-  FILTER_PRODUCTS,
+  SORT_PRODUCTS,
+  UPDATE_FILTERS,
 } from '../../actions'
 
 const filterReducer = (state, action) => {
@@ -28,7 +29,7 @@ const filterReducer = (state, action) => {
   if (action.type === UPDATE_SORT) {
     return { ...state, sort: action.payload }
   }
-  if (action.type === FILTER_PRODUCTS) {
+  if (action.type === SORT_PRODUCTS) {
     const { sort, filtered_products } = state
     let tmp = [...filtered_products]
     if (sort === 'all-products') {
@@ -56,6 +57,11 @@ const filterReducer = (state, action) => {
     }
 
     return { ...state, filtered_products: tmp }
+  }
+  if (action.type === UPDATE_FILTERS) {
+    const { name, value } = action.payload
+
+    return { ...state, filters: { ...state.filters, [name]: value } }
   }
   throw new Error(`No Matching "${action.type}" - action type`)
 }
