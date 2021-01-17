@@ -5,6 +5,7 @@ import {
   UPDATE_SORT,
   SORT_PRODUCTS,
   UPDATE_FILTERS,
+  FILTER_PRODUCTS,
 } from '../../actions'
 
 const filterReducer = (state, action) => {
@@ -62,6 +63,9 @@ const filterReducer = (state, action) => {
     const { name, value } = action.payload
 
     return { ...state, filters: { ...state.filters, [name]: value } }
+  }
+  if (action.type === FILTER_PRODUCTS) {
+    return { ...state }
   }
   throw new Error(`No Matching "${action.type}" - action type`)
 }

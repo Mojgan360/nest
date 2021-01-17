@@ -9,6 +9,7 @@ import {
   UPDATE_SORT,
   SORT_PRODUCTS,
   UPDATE_FILTERS,
+  FILTER_PRODUCTS,
 } from '../../actions'
 
 const initialState = {
@@ -38,7 +39,7 @@ const FilterState = ({ children }) => {
   }, [products])
 
   useEffect(() => {
-    // dispatch({ type: FILTER_PRODUCTS })
+    dispatch({ type: FILTER_PRODUCTS })
     dispatch({ type: SORT_PRODUCTS })
   }, [products, state.sort, state.filters])
 
