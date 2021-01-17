@@ -1,4 +1,4 @@
-import React, { useContext, useReducer } from 'react'
+import React, { useContext, useReducer, useEffect } from 'react'
 
 import reducer from '../reducers/products_reducer'
 import {
@@ -14,9 +14,9 @@ import {
 
 import Client from '../contentful'
 
-Client.getEntries({
-  content_type: 'nestStoreApp',
-}).then((response) => console.log(response))
+// Client.getEntries({
+//   content_type: 'nestStoreApp',
+// }).then((response) => console.log(response))
 
 const initialState = {
   isSidebarOpen: false,
@@ -81,7 +81,7 @@ export const ProductsProvider = ({ children }) => {
     }
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     fetchProducts() //fetch product.featured===true
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
