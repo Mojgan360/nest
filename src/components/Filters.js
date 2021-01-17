@@ -1,13 +1,19 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
 import FilterContext from '../context/filter/filterContext'
+import { getUniqueValues } from '../utils/helpers'
 
 const Filters = () => {
   const filterContext = useContext(FilterContext)
   const {
     filters: { text },
     updateFilters,
+    all_products,
   } = filterContext
+
+  const categories = getUniqueValues(all_products, 'category')
+
+  console.log(categories)
   return (
     <div>
       <Wrapper>
