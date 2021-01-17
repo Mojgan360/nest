@@ -6,12 +6,14 @@ import { getUniqueValues } from '../utils/helpers'
 const Filters = () => {
   const filterContext = useContext(FilterContext)
   const {
-    filters: { text },
+    filters: { text, category },
     updateFilters,
     all_products,
   } = filterContext
 
   const categories = getUniqueValues(all_products, 'category')
+  // const companies = getUniqueValues(all_products, 'company')
+  // const colors = getUniqueValues(all_products, 'colors')
 
   console.log(categories)
   return (
@@ -19,6 +21,7 @@ const Filters = () => {
       <Wrapper>
         <div className='content'>
           <form onSubmit={(e) => e.preventDefault()}>
+            {/* search input */}
             <div className='form-control'>
               <input
                 type='text'
@@ -29,6 +32,33 @@ const Filters = () => {
                 onChange={updateFilters}
               />
             </div>
+            {/* end of search input */}
+            <div className='form-control'>
+              <h5>category</h5>
+              {categories.map((c, index) => {
+                return (
+                  <button
+                    key={index}
+                    onClick={updateFilters}
+                    type='button'
+                    name='category'
+                    className={`${
+                      category === c.toLowerCase() ? 'active' : null
+                    }`}
+                  >
+                    {c}
+                  </button>
+                )
+              })}
+            </div>
+            {/* categories */}
+            {/* end of categories */}
+
+            {/* companies */}
+            {/* end of companies */}
+
+            {/* colors */}
+            {/* end of colors */}
           </form>
         </div>
       </Wrapper>
