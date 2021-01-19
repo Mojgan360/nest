@@ -18,6 +18,7 @@ const Filters = () => {
       shipping,
     },
     updateFilters,
+    clearFilters,
     all_products,
   } = filterContext
 
@@ -147,17 +148,15 @@ const Filters = () => {
           </div>
           {/* end of  shippping */}
         </form>
+        <button type='button' className='clear-btn' onClick={clearFilters}>
+          clear filters
+        </button>
       </div>
     </Wrapper>
   )
 }
 
 const Wrapper = styled.section`
-  .content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
   .form-control {
     margin-bottom: 1.25rem;
     h5 {
