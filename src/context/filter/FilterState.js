@@ -61,6 +61,9 @@ const FilterState = ({ children }) => {
     if (name === 'category') {
       value = e.target.textContent
     }
+    if (name === 'color') {
+      value = e.target.dataset.color //e.target.attribute.name
+    }
 
     dispatch({ type: UPDATE_FILTERS, payload: { name, value } })
   }

@@ -2,89 +2,140 @@ import React, { useContext } from 'react'
 import styled from 'styled-components'
 import FilterContext from '../context/filter/filterContext'
 import { getUniqueValues } from '../utils/helpers'
+import { FaCheck } from 'react-icons/fa'
 
 const Filters = () => {
   const filterContext = useContext(FilterContext)
   const {
-    filters: { text, category, company },
+    filters: { text, category, company, color },
     updateFilters,
     all_products,
   } = filterContext
 
   const categories = getUniqueValues(all_products, 'category')
   const companies = getUniqueValues(all_products, 'company')
-  // const colors = getUniqueValues(all_products, 'colors')
+  const colors = getUniqueValues(all_products, 'colors')
 
-  console.log(categories)
   return (
-    <div>
-      <Wrapper>
-        <div className='content'>
-          <form onSubmit={(e) => e.preventDefault()}>
-            {/* search input */}
-            <div className='form-control'>
-              <input
-                type='text'
-                name='text'
-                value={text}
-                placeholder='search'
-                className='search-input'
-                onChange={updateFilters}
-              />
-            </div>
-            {/* end of search input */}
+    <Wrapper>
+      <div className='content'>
+        <form onSubmit={(e) => e.preventDefault()}>
+          {/* search input */}
+          <div className='form-control'>
+            <input
+              type='text'
+              name='text'
+              placeholder='search'
+              className='search-input'
+              value={text}
+              onChange={updateFilters}
+            />
+          </div>
+          {/* end search input */}
+          {/* categories */}
+          <div className='form-control'>
+            <h5>category</h5>
 
-            {/* categories */}
-            <div className='form-control'>
-              <h5>category</h5>
-              {categories.map((c, index) => {
+            {categories.map((c, index) => {
+              return (
+                <button
+                  key={index}
+                  onClick={updateFilters}
+                  type='button'
+                  name='category'
+                  className={`${
+                    category === c.toLowerCase() ? 'active' : null
+                  }`}
+                >
+                  {c}
+                </button>
+              )
+            })}
+          </div>
+          {/* end of categories */}
+          {/* companies */}
+          <div className='form-control'>
+            <h5>company</h5>
+            <select
+              name='company'
+              value={company}
+              onChange={updateFilters}
+              className='company'
+            >
+              {companies.map((c, index) => {
+                return (
+                  <option key={index} value={c}>
+                    {c}
+                  </option>
+                )
+              })}
+            </select>
+          </div>
+          {/* end of companies */}
+          {/* 
+          colors
+          */}
+          <div className='form-control'>
+            <h5>colors</h5>
+            <div className='colors'>
+              {colors.map((c, index) => {
+                if (c === 'all') {
+                  return (
+                    <button
+                      key={index}
+                      name='color'
+                      onClick={updateFilters}
+                      data-color='all'
+                      className={`${
+                        color === 'all' ? 'all-btn active' : 'all-btn'
+                      }`}
+                    >
+                      all
+                    </button>
+                  )
+                }
                 return (
                   <button
                     key={index}
+                    name='color'
                     onClick={updateFilters}
-                    type='button'
-                    name='category'
+                    style={{ background: c }}
                     className={`${
-                      category === c.toLowerCase() ? 'active' : null
+                      color === c ? 'color-btn active' : 'color-btn'
                     }`}
+                    data-color={c}
                   >
-                    {c}
+                    {color === c ? <FaCheck /> : null}
                   </button>
                 )
               })}
             </div>
-            {/* end of categories */}
-
-            {/* companies */}
-            <div className='form-control'>
-              <h5>company</h5>
-              <select
-                name='company'
-                value={company}
-                onChange={updateFilters}
-                className='company'
-              >
-                {companies.map((c, index) => {
-                  return (
-                    <option key={index} value={c}>
-                      {c}
-                    </option>
-                  )
-                })}
-              </select>
-            </div>
-            {/* end of companies */}
-
-            {/* colors */}
-            {/* end of colors */}
-          </form>
-        </div>
-      </Wrapper>
-    </div>
+          </div>
+          {/* 
+end of           colors
+          */}
+          {/* price */}
+          <div className='form-control'>
+            <h5>price</h5>
+          </div>
+          {/* end of price */}
+          {/* shippping */}
+          <div className='form-control shipping'>
+            <label htmlFor='shipping'> free shipping</label>
+          </div>
+          {/* end of  shippping */}
+        </form>
+      </div>
+    </Wrapper>
   )
 }
 
 const Wrapper = styled.section`
+  .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   .form-control {
     margin-bottom: 1.25rem;
     h5 {
@@ -117,6 +168,7 @@ const Wrapper = styled.section`
   .active {
     border-color: var(--clr-grey-5);
   }
+
   .company {
     background: var(--clr-grey-10);
     border-radius: var(--radius);
