@@ -64,6 +64,9 @@ const FilterState = ({ children }) => {
     if (name === 'color') {
       value = e.target.dataset.color //e.target.attribute.name
     }
+    if (name === 'price') {
+      value = Number(value)
+    }
 
     dispatch({ type: UPDATE_FILTERS, payload: { name, value } })
   }
