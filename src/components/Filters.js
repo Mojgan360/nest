@@ -1,13 +1,13 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
 import FilterContext from '../context/filter/filterContext'
-import { getUniqueValues } from '../utils/helpers'
+import { getUniqueValues, formatPrice } from '../utils/helpers'
 import { FaCheck } from 'react-icons/fa'
 
 const Filters = () => {
   const filterContext = useContext(FilterContext)
   const {
-    filters: { text, category, company, color },
+    filters: { text, category, company, color, min_price, max_price, price },
     updateFilters,
     all_products,
   } = filterContext
@@ -72,9 +72,7 @@ const Filters = () => {
             </select>
           </div>
           {/* end of companies */}
-          {/* 
-          colors
-          */}
+          {/* colors*/}
           <div className='form-control'>
             <h5>colors</h5>
             <div className='colors'>
@@ -94,6 +92,7 @@ const Filters = () => {
                     </button>
                   )
                 }
+
                 return (
                   <button
                     key={index}
@@ -111,12 +110,19 @@ const Filters = () => {
               })}
             </div>
           </div>
-          {/* 
-end of           colors
-          */}
+          {/* end ofcolors */}
           {/* price */}
           <div className='form-control'>
             <h5>price</h5>
+            <p className='price'>{formatPrice(price)}</p>
+            <input
+              type='range'
+              name='price'
+              min={min_price}
+              max={max_price}
+              onChange={updateFilters}
+              value={price}
+            />
           </div>
           {/* end of price */}
           {/* shippping */}
