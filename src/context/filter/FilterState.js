@@ -67,7 +67,9 @@ const FilterState = ({ children }) => {
     if (name === 'price') {
       value = Number(value)
     }
-
+    if (name === 'shipping') {
+      value = e.target.checked
+    }
     dispatch({ type: UPDATE_FILTERS, payload: { name, value } })
   }
 
