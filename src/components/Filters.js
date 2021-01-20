@@ -260,12 +260,9 @@ const Wrapper = styled.section`
     text-transform: capitalize;
     column-gap: 0.5rem;
     font-size: 1rem;
+    margin-bottom: 3rem;
   }
   .clear-btn {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
     text-transform: capitalize;
     background: var(--clr-red-dark);
     color: var(--clr-white);
