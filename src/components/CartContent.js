@@ -9,14 +9,12 @@ import CartContext from '../context/cart/cartContext'
 const CartContent = () => {
   const cartContext = useContext(CartContext)
   const { cart } = CartContext
+  console.log(cart)
 
   return (
     <Wrapper className='section section-center'>
       <CartColumns />
-      <CartColumns />
-      {cart.map((item) => {
-        return <CartItem key={item.id} {...item} />
-      })}
+
       <hr />
       <div className='link-container'>
         <Link to='/products' className='link-btn'>
