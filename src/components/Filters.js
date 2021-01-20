@@ -25,45 +25,48 @@ const Filters = () => {
   const categories = getUniqueValues(all_products, 'category')
   const companies = getUniqueValues(all_products, 'company')
   const colors = getUniqueValues(all_products, 'colors')
-
   return (
     <Wrapper>
-      <div className='content'>
-        <form onSubmit={(e) => e.preventDefault()}>
+      <div>
+        <form className='content ' onSubmit={(e) => e.preventDefault()}>
           {/* search input */}
           <div className='form-control'>
             <input
               type='text'
               name='text'
-              placeholder='search'
-              className='search-input'
               value={text}
+              placeholder='search'
               onChange={updateFilters}
+              className='search-input'
             />
           </div>
-          {/* end search input */}
-          {/* categories */}
-          <div className='form-control'>
+          {/* end of search input */}
+          {/* category */}
+          <div className='form-control '>
             <h5>category</h5>
-
-            {categories.map((c, index) => {
-              return (
-                <button
-                  key={index}
-                  onClick={updateFilters}
-                  type='button'
-                  name='category'
-                  className={`${
-                    category === c.toLowerCase() ? 'active' : null
-                  }`}
-                >
-                  {c}
-                </button>
-              )
-            })}
+            <div>
+              {categories.map((c, index) => {
+                return (
+                  <div className='box'>
+                    {' '}
+                    <button
+                      key={index}
+                      onClick={updateFilters}
+                      type='button'
+                      name='category'
+                      className={`${
+                        category === c.toLowerCase() ? 'active' : null
+                      }`}
+                    >
+                      {c}
+                    </button>
+                  </div>
+                )
+              })}
+            </div>
           </div>
-          {/* end of categories */}
-          {/* companies */}
+          {/* end of category */}
+          {/* company */}
           <div className='form-control'>
             <h5>company</h5>
             <select
@@ -81,11 +84,11 @@ const Filters = () => {
               })}
             </select>
           </div>
-          {/* end of companies */}
-          {/* colors*/}
+          {/* end of company */}
+          {/* colors */}
           <div className='form-control'>
             <h5>colors</h5>
-            <div className='colors'>
+            <div className='colors  '>
               {colors.map((c, index) => {
                 if (c === 'all') {
                   return (
@@ -102,17 +105,16 @@ const Filters = () => {
                     </button>
                   )
                 }
-
                 return (
                   <button
                     key={index}
                     name='color'
-                    onClick={updateFilters}
                     style={{ background: c }}
                     className={`${
                       color === c ? 'color-btn active' : 'color-btn'
                     }`}
                     data-color={c}
+                    onClick={updateFilters}
                   >
                     {color === c ? <FaCheck /> : null}
                   </button>
@@ -120,7 +122,7 @@ const Filters = () => {
               })}
             </div>
           </div>
-          {/* end ofcolors */}
+          {/* end of colors */}
           {/* price */}
           <div className='form-control'>
             <h5>price</h5>
@@ -128,35 +130,50 @@ const Filters = () => {
             <input
               type='range'
               name='price'
+              onChange={updateFilters}
               min={min_price}
               max={max_price}
-              onChange={updateFilters}
               value={price}
             />
           </div>
           {/* end of price */}
-          {/* shippping */}
-          <div className='form-control shipping'>
-            <label htmlFor='shipping'> free shipping</label>
+          {/* shipping */}
+          <div className='form-control shipping '>
+            <label htmlFor='shipping'>free shipping</label>
             <input
               type='checkbox'
               name='shipping'
               id='shipping'
-              onChange={updateFilters}
               checked={shipping}
+              onChange={updateFilters}
             />
           </div>
-          {/* end of  shippping */}
+          {/* end of  shipping */}
         </form>
-        <button type='button' className='clear-btn' onClick={clearFilters}>
-          clear filters
-        </button>
+        <div className='colors'>
+          <button type='button' className='clear-btn ' onClick={clearFilters}>
+            clear filters
+          </button>
+        </div>
       </div>
     </Wrapper>
   )
 }
 
 const Wrapper = styled.section`
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+  }
+  .box {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: center;
+  }
+
   .form-control {
     margin-bottom: 1.25rem;
     h5 {
@@ -189,7 +206,6 @@ const Wrapper = styled.section`
   .active {
     border-color: var(--clr-grey-5);
   }
-
   .company {
     background: var(--clr-grey-10);
     border-radius: var(--radius);
@@ -198,6 +214,8 @@ const Wrapper = styled.section`
   }
   .colors {
     display: flex;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
   }
   .color-btn {
@@ -235,14 +253,20 @@ const Wrapper = styled.section`
     margin-bottom: 0.25rem;
   }
   .shipping {
-    display: grid;
-    grid-template-columns: auto 1fr;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
     text-transform: capitalize;
     column-gap: 0.5rem;
     font-size: 1rem;
   }
   .clear-btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-transform: capitalize;
     background: var(--clr-red-dark);
     color: var(--clr-white);
     padding: 0.25rem 0.5rem;

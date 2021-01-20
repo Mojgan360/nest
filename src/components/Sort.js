@@ -15,7 +15,6 @@ const Sort = () => {
     sort,
     updateSort,
   } = filterContext
-
   return (
     <Wrapper>
       <div className='btn-container'>
@@ -41,11 +40,10 @@ const Sort = () => {
         <select
           name='sort'
           id='sort'
-          value={sort}
           className='sort-input'
+          value={sort}
           onChange={updateSort}
         >
-          <option value='all-products'>all products</option>
           <option value='price-lowest'>price (lowest)</option>
           <option value='price-highest'>price (highest)</option>
           <option value='name-a'>name (a-z)</option>
