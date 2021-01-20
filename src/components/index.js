@@ -14,6 +14,7 @@ import AddToCart from './AddToCart'
 import ProductsList from './ProductsList'
 import Sort from './Sort'
 import Filters from './Filters'
+import CartContent from './CartContent'
 
 export {
   Navbar,
@@ -32,4 +33,5 @@ export {
   ProductsList,
   Sort,
   Filters,
+  CartContent,
 }

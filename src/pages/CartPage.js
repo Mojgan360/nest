@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import CartContext from '../context/cart/cartContext'
-import { PageHero } from '../components'
+import { CartContent, PageHero } from '../components'
 
 const CartPage = () => {
   const cartContext = useContext(CartContext)
@@ -23,7 +23,9 @@ const CartPage = () => {
   return (
     <main>
       <PageHero title='cart' />
-      <Wrapper className='page'></Wrapper>
+      <Wrapper className='page'>
+        <CartContent />
+      </Wrapper>
     </main>
   )
 }
