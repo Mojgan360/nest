@@ -75,7 +75,7 @@ const filterReducer = (state, action) => {
         return product.name.toLowerCase().startsWith(text)
       })
     }
-    return { ...state }
+    return { ...state, filtered_products: tempProducts }
   }
   if (action.type === CLEAR_FILTERS) {
     return {
