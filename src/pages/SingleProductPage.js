@@ -39,6 +39,7 @@ const SingleProductPage = () => {
   }, [error])
   if (loading) return <Loading />
   if (error) return <Error msg='Somthing Not working..., Try again' />
+
   product['sku'] = id
 
   const {
@@ -46,9 +47,7 @@ const SingleProductPage = () => {
     name,
     price,
     company,
-    // category,
     text,
-    // shipping,
     stock,
     images,
     stars,
