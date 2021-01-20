@@ -8,12 +8,15 @@ import CartContext from '../context/cart/cartContext'
 
 const CartContent = () => {
   const cartContext = useContext(CartContext)
-  const { cart } = CartContext
+  const { cart } = cartContext
   console.log(cart)
 
   return (
     <Wrapper className='section section-center'>
       <CartColumns />
+      {cart.map((item, index) => {
+        return <CartItem key={index} />
+      })}
 
       <hr />
       <div className='link-container'>
