@@ -6,6 +6,8 @@ import { ProductsProvider } from './context/products_context'
 import AlertState from './context/alert/AlertState'
 import FilterState from './context/filter/FilterState'
 import CartState from './context/cart/CartState'
+import UserState from './context/user/UserState'
+
 import { Auth0Provider } from '@auth0/auth0-react'
 
 ReactDOM.render(
@@ -15,7 +17,8 @@ ReactDOM.render(
     redirectUri={window.location.origin}
     cacheLocation='localstorage'
   >
-    <React.StrictMode>
+    {/* <React.StrictMode> */}
+    <UserState>
       <ProductsProvider>
         <FilterState>
           <CartState>
@@ -25,7 +28,8 @@ ReactDOM.render(
           </CartState>
         </FilterState>
       </ProductsProvider>
-    </React.StrictMode>
+    </UserState>
+    {/* </React.StrictMode> */}
   </Auth0Provider>,
   document.getElementById('root')
 )
