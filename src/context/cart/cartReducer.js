@@ -9,6 +9,7 @@ const cartReducer = (state, action) => {
   if (action.type === ADD_TO_CART) {
     const { id, color, amount, product } = action.payload
     const tempItem = state.cart.find((i) => i.id === id + color)
+
     if (tempItem) {
       const tempCart = state.cart.map((cartItem) => {
         if (cartItem.id === id + color) {
@@ -45,7 +46,11 @@ const cartReducer = (state, action) => {
     return { ...state, cart: [] }
   }
   if (action.type === TOGGLE_CART_ITEM_AMOUNT) {
-    return { ...state }
+    const { id, value } = action.payload
+    const tmpCart = state.cart.map()
+    //code....
+
+    return { ...state, tmpCart }
   }
   throw new Error(`No Matching "${action.type}" - action type`)
 }
