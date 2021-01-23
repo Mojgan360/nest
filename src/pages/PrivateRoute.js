@@ -1,15 +1,14 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
-import UserContext from '../context/user/userContext'
+import { useAuth0 } from '@auth0/auth0-react'
 
 const PrivateRoute = ({ children, ...rest }) => {
-  const userContext = useContext(UserContext)
-  const { myUser } = userContext
+  const { user } = useAuth0()
   return (
     <Route
       {...rest}
       render={() => {
-        return myUser ? children : <Redirect to='/'></Redirect>
+        return user ? children : <Redirect to='/'></Redirect>
       }}
     ></Route>
   )
