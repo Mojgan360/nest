@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import FilterContext from '../context/filter/filterContext'
-
 import { BsFillGridFill, BsList } from 'react-icons/bs'
 import styled from 'styled-components'
 
@@ -15,6 +14,7 @@ const Sort = () => {
     sort,
     updateSort,
   } = filterContext
+
   return (
     <Wrapper>
       <div className='btn-container'>
@@ -116,5 +116,4 @@ const Wrapper = styled.section`
     text-transform: capitalize;
   }
 `
-
 export default Sort

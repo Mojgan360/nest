@@ -25,46 +25,46 @@ const Filters = () => {
   const categories = getUniqueValues(all_products, 'category')
   const companies = getUniqueValues(all_products, 'company')
   const colors = getUniqueValues(all_products, 'colors')
+
   return (
     <Wrapper>
-      <div>
-        <form className='content ' onSubmit={(e) => e.preventDefault()}>
+      <div className='content'>
+        <form onSubmit={(e) => e.preventDefault()}>
           {/* search input */}
           <div className='form-control'>
             <input
               type='text'
               name='text'
-              value={text}
               placeholder='search'
-              onChange={updateFilters}
               className='search-input'
+              value={text}
+              onChange={updateFilters}
             />
           </div>
-          {/* end of search input */}
-          {/* category */}
-          <div className='form-control '>
+          {/* end search input */}
+          {/* categories */}
+          <div className='form-control'>
             <h5>category</h5>
             <div>
               {categories.map((c, index) => {
                 return (
-                  <div key={index} className='box'>
-                    <button
-                      onClick={updateFilters}
-                      type='button'
-                      name='category'
-                      className={`${
-                        category === c.toLowerCase() ? 'active' : null
-                      }`}
-                    >
-                      {c}
-                    </button>
-                  </div>
+                  <button
+                    key={index}
+                    onClick={updateFilters}
+                    type='button'
+                    name='category'
+                    className={`${
+                      category === c.toLowerCase() ? 'active' : null
+                    }`}
+                  >
+                    {c}
+                  </button>
                 )
               })}
             </div>
           </div>
-          {/* end of category */}
-          {/* company */}
+          {/* end of categories */}
+          {/* companies */}
           <div className='form-control'>
             <h5>company</h5>
             <select
@@ -82,11 +82,13 @@ const Filters = () => {
               })}
             </select>
           </div>
-          {/* end of company */}
-          {/* colors */}
+          {/* end of companies */}
+          {/* 
+          colors
+          */}
           <div className='form-control'>
             <h5>colors</h5>
-            <div className='colors  '>
+            <div className='colors'>
               {colors.map((c, index) => {
                 if (c === 'all') {
                   return (
@@ -120,7 +122,9 @@ const Filters = () => {
               })}
             </div>
           </div>
-          {/* end of colors */}
+          {/* 
+end of           colors
+          */}
           {/* price */}
           <div className='form-control'>
             <h5>price</h5>
@@ -128,50 +132,36 @@ const Filters = () => {
             <input
               type='range'
               name='price'
-              onChange={updateFilters}
               min={min_price}
               max={max_price}
+              onChange={updateFilters}
               value={price}
             />
           </div>
           {/* end of price */}
-          {/* shipping */}
-          <div className='form-control shipping '>
-            <label htmlFor='shipping'>free shipping</label>
+          {/* shippping */}
+          <div className='form-control shipping'>
+            <label htmlFor='shipping'> free shipping</label>
             <input
               type='checkbox'
               name='shipping'
               id='shipping'
-              checked={shipping}
               onChange={updateFilters}
+              checked={shipping}
             />
           </div>
-          {/* end of  shipping */}
+          {/* end of  shippping */}
         </form>
-        <div className='colors'>
-          <button type='button' className='clear-btn ' onClick={clearFilters}>
-            clear filters
-          </button>
-        </div>
+        <button type='button' className='clear-btn' onClick={clearFilters}>
+          {' '}
+          clear filters
+        </button>
       </div>
     </Wrapper>
   )
 }
 
 const Wrapper = styled.section`
-  .content {
-    display: flex;
-    flex-direction: column;
-    justify-content: left;
-    align-items: left;
-  }
-  .box {
-    display: flex;
-    flex-direction: column;
-    justify-content: left;
-    align-items: center;
-  }
-
   .form-control {
     margin-bottom: 1.25rem;
     h5 {
@@ -212,8 +202,6 @@ const Wrapper = styled.section`
   }
   .colors {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
     align-items: center;
   }
   .color-btn {
@@ -251,17 +239,14 @@ const Wrapper = styled.section`
     margin-bottom: 0.25rem;
   }
   .shipping {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: auto 1fr;
     align-items: center;
     text-transform: capitalize;
     column-gap: 0.5rem;
     font-size: 1rem;
-    margin-bottom: 3rem;
   }
   .clear-btn {
-    text-transform: capitalize;
     background: var(--clr-red-dark);
     color: var(--clr-white);
     padding: 0.25rem 0.5rem;
@@ -274,5 +259,4 @@ const Wrapper = styled.section`
     }
   }
 `
-
 export default Filters

@@ -14,7 +14,6 @@ const ProductsList = () => {
       </h5>
     )
   }
-
   if (grid_view === false) {
     return <ListView products={products} />
   }

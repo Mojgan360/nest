@@ -22,14 +22,10 @@ const CartItem = ({ id, image, name, color, price, amount }) => {
             color : <span style={{ background: color }}></span>
           </p>
           <h5 className='price-small'>{formatPrice(price)}</h5>
-          <AmountButtons
-            increase={increase}
-            decrease={decrease}
-            amount={amount}
-          />
         </div>
       </div>
       <h5 className='price'>{formatPrice(price)}</h5>
+      <AmountButtons amount={amount} increase={increase} decrease={decrease} />
     </Wrapper>
   )
 }

@@ -1,4 +1,3 @@
-import './App.css'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import {
   Home,
@@ -14,37 +13,35 @@ import Alert from './components/Alert'
 
 function App() {
   return (
-    <div className='App'>
-      <Router>
-        <Navbar />
-        <Alert />
-        <Sidebar />
-        <Switch>
-          <Route exact path='/'>
-            <Home />
-          </Route>
-          <Route exact path='/products'>
-            <Products />
-          </Route>
-          <Route exact path='/products/:id' children={<SingleProduct />}>
-            <SingleProduct />
-          </Route>
-          <Route exact path='/about'>
-            <About />
-          </Route>
-          <Route exact path='/checkout'>
-            <CheckoutPage />
-          </Route>
-          <Route exact path='/cart'>
-            <Cart />
-          </Route>
-          <Route path='*'>
-            <Error />
-          </Route>
-        </Switch>
-        <Footer />
-      </Router>
-    </div>
+    <Router>
+      <Navbar />
+      <Alert />
+      <Sidebar />
+      <Switch>
+        <Route exact path='/'>
+          <Home />
+        </Route>
+        <Route exact path='/products'>
+          <Products />
+        </Route>
+        <Route exact path='/products/:id' children={<SingleProduct />}>
+          <SingleProduct />
+        </Route>
+        <Route exact path='/about'>
+          <About />
+        </Route>
+        <Route exact path='/checkout'>
+          <CheckoutPage />
+        </Route>
+        <Route exact path='/cart'>
+          <Cart />
+        </Route>
+        <Route path='*'>
+          <Error />
+        </Route>
+      </Switch>
+      <Footer />
+    </Router>
   )
 }
 
