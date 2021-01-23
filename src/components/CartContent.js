@@ -9,7 +9,6 @@ import CartContext from '../context/cart/cartContext'
 const CartContent = () => {
   const cartContext = useContext(CartContext)
   const { cart } = cartContext
-  console.log(cart)
 
   return (
     <Wrapper className='section section-center'>
