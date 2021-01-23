@@ -1,7 +1,7 @@
 import React, { useReducer, useEffect } from 'react'
 import CartContext from './cartContext'
 import cartReducer from './cartReducer'
-import { ADD_TO_CART } from '../../actions'
+import { ADD_TO_CART, REMOVE_CART_ITEM } from '../../actions'
 
 const getLocalStorage = () => {
   let cart = localStorage.getItem('cart')
@@ -27,12 +27,19 @@ const CartState = ({ children }) => {
   const toggleAmount = (id, value) => {
     console.log(id, value)
   }
+  const removeItem = (id) => {
+    dispatch({ type: REMOVE_CART_ITEM, payload: id })
+    console.log('ID:     ', id)
+  }
 
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(state.cart))
   }, [state.cart])
+
   return (
-    <CartContext.Provider value={{ ...state, addToCart, toggleAmount }}>
+    <CartContext.Provider
+      value={{ ...state, addToCart, toggleAmount, removeItem }}
+    >
       {children}
     </CartContext.Provider>
   )

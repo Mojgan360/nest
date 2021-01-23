@@ -1,13 +1,11 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
 import { formatPrice } from '../utils/helpers'
 import CartContext from '../context/cart/cartContext'
 import AmountButtons from './AmountButtons'
 import { FaTrash } from 'react-icons/fa'
 
 const CartItem = ({ id, image, name, color, price, amount }) => {
-  console.log(`Name: ${price}`)
   const cartContext = useContext(CartContext)
   const { removeItem, toggleAmount } = cartContext
   const increase = () => {}
@@ -24,8 +22,16 @@ const CartItem = ({ id, image, name, color, price, amount }) => {
           <h5 className='price-small'>{formatPrice(price)}</h5>
         </div>
       </div>
-      <h5 className='price'>{formatPrice(price)}</h5>
       <AmountButtons amount={amount} increase={increase} decrease={decrease} />
+      <h5 className='price'>{formatPrice(price)}</h5>
+
+      <button
+        type='button'
+        className='remove-btn'
+        onClick={() => removeItem(id)}
+      >
+        <FaTrash />
+      </button>
     </Wrapper>
   )
 }
