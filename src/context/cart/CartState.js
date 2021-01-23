@@ -1,7 +1,7 @@
 import React, { useReducer, useEffect } from 'react'
 import CartContext from './cartContext'
 import cartReducer from './cartReducer'
-import { ADD_TO_CART, REMOVE_CART_ITEM } from '../../actions'
+import { ADD_TO_CART, REMOVE_CART_ITEM, CLEAR_CART } from '../../actions'
 
 const getLocalStorage = () => {
   let cart = localStorage.getItem('cart')
@@ -29,7 +29,10 @@ const CartState = ({ children }) => {
   }
   const removeItem = (id) => {
     dispatch({ type: REMOVE_CART_ITEM, payload: id })
-    console.log('ID:     ', id)
+  }
+  const clearCart = () => {
+    dispatch({ type: CLEAR_CART })
+    console.log('clean up')
   }
 
   useEffect(() => {
@@ -38,7 +41,7 @@ const CartState = ({ children }) => {
 
   return (
     <CartContext.Provider
-      value={{ ...state, addToCart, toggleAmount, removeItem }}
+      value={{ ...state, addToCart, toggleAmount, removeItem, clearCart }}
     >
       {children}
     </CartContext.Provider>
