@@ -13,7 +13,7 @@ import { Auth0Provider } from '@auth0/auth0-react'
 ReactDOM.render(
   <Auth0Provider
     domain='mojgan360.eu.auth0.com'
-    clientId='Js6a4V4WGLHPqMKpm0kf6VQBa4qPqGI1'
+    clientId='mcGwZiKAdH4HbWFl2PrMIH21RNjEU4Qj'
     redirectUri={window.location.origin}
     cacheLocation='localstorage'
   >

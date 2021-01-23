@@ -48,6 +48,7 @@ const cartReducer = (state, action) => {
   }
   if (action.type === TOGGLE_CART_ITEM_AMOUNT) {
     const { id, value } = action.payload
+    // eslint-disable-next-line array-callback-return
     const tmpCart = state.cart.map((item) => {
       if (item.id === id) {
         if (value === 'inc') {
@@ -91,7 +92,7 @@ const cartReducer = (state, action) => {
     )
     return { ...state, total_items, total_amount }
   }
-  // throw new Error(`No Matching "${action.type}" - action type`)
+  throw new Error(`No Matching "${action.type}" - action type`)
 }
 
 export default cartReducer
