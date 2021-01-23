@@ -15,9 +15,14 @@ const UserState = ({ children }) => {
   const [myUser, setMyUser] = useState(null)
 
   useEffect(() => {
-    console.log('User:   ', user)
-    console.log('isAuthenticated:   ', isAuthenticated)
-    console.log('isLoading:   ', isLoading)
+    // console.log('User:   ', user)
+    // console.log('isAuthenticated:   ', isAuthenticated)
+    // console.log('isLoading:   ', isLoading)
+    if (isAuthenticated) {
+      setMyUser(user)
+    } else {
+      setMyUser(false)
+    }
   }, [isAuthenticated])
 
   return (
