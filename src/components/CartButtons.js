@@ -1,15 +1,20 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { FaShoppingCart, FaUserPlus } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
+import CartContext from '../context/cart/cartContext'
+
 const CartButtons = () => {
+  const cartContext = useContext(CartContext)
+  const { total_amount } = cartContext
+  // console.log(total_amount)
   return (
     <Wrapper className='cart-btn-wrapper'>
       <Link to='/cart' className='cart-btn'>
         cart
         <span className='cart-container'>
           <FaShoppingCart />
-          <span className='cart-value'>10</span>
+          <span className='cart-value'>{total_amount}</span>
         </span>
       </Link>
       <button type='button' className='auth-btn'>
@@ -18,8 +23,6 @@ const CartButtons = () => {
     </Wrapper>
   )
 }
-
-export default CartButtons
 
 const Wrapper = styled.div`
   display: grid;
@@ -74,3 +77,4 @@ const Wrapper = styled.div`
     }
   }
 `
+export default CartButtons

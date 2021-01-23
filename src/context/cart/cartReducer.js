@@ -3,6 +3,7 @@ import {
   REMOVE_CART_ITEM,
   CLEAR_CART,
   TOGGLE_CART_ITEM_AMOUNT,
+  COUNT_CART_TOTALS,
 } from '../../actions'
 
 const cartReducer = (state, action) => {
@@ -70,7 +71,27 @@ const cartReducer = (state, action) => {
 
     return { ...state, cart: tmpCart }
   }
-  throw new Error(`No Matching "${action.type}" - action type`)
+  if (action.type === COUNT_CART_TOTALS) {
+    const { total_items, total_amount } = state.cart.reduce(
+      (total, cartItem) => {
+        //code...
+        const { amount, price } = cartItem
+
+        total.total_items += amount
+        total.total_amount += price * amount
+
+        //code ...
+        //alltid return total
+        return total
+      }, //return en object - total_items=0, total_amount=0
+      {
+        total_items: 0,
+        total_amount: 0,
+      }
+    )
+    return { ...state, total_items, total_amount }
+  }
+  // throw new Error(`No Matching "${action.type}" - action type`)
 }
 
 export default cartReducer

@@ -6,6 +6,7 @@ import {
   REMOVE_CART_ITEM,
   CLEAR_CART,
   TOGGLE_CART_ITEM_AMOUNT,
+  COUNT_CART_TOTALS,
 } from '../../actions'
 
 const getLocalStorage = () => {
@@ -42,6 +43,8 @@ const CartState = ({ children }) => {
   }
 
   useEffect(() => {
+    dispatch({ type: COUNT_CART_TOTALS })
+
     localStorage.setItem('cart', JSON.stringify(state.cart))
   }, [state.cart])
 
