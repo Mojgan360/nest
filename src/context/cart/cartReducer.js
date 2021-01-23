@@ -47,8 +47,18 @@ const cartReducer = (state, action) => {
   }
   if (action.type === TOGGLE_CART_ITEM_AMOUNT) {
     const { id, value } = action.payload
-    const tmpCart = state.cart.map()
-    //code....
+    const tmpCart = state.cart.map((item) => {
+      if (item.id === id) {
+        if (value === 'inc') {
+          //code ...
+        }
+        if (value === 'dec') {
+          //code...
+        }
+      } else {
+        return item
+      }
+    })
 
     return { ...state, tmpCart }
   }
