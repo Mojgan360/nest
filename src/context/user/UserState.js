@@ -1,17 +1,29 @@
-import React, { useReducer } from 'react'
+import React, { useEffect, useState } from 'react'
 import UserContext from '../user/userContext'
-import userRducer from '../user/userReducer'
 import reducer from '../user/userReducer'
-
-const initialState = {
-  user: '',
-}
+import { useAuth0 } from '@auth0/auth0-react'
 
 const UserState = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, initialState)
+  const {
+    isAuthenticated,
+    loginWithRedirect,
+    logout,
+    user,
+    isLoading,
+  } = useAuth0()
+
+  const [myUser, setMyUser] = useState(null)
+
+  useEffect(() => {
+    console.log('User:   ', user)
+    console.log('isAuthenticated:   ', isAuthenticated)
+    console.log('isLoading:   ', isLoading)
+  }, [isAuthenticated])
 
   return (
-    <UserContext.Provider value={{ ...state }}>{children}</UserContext.Provider>
+    <UserContext.Provider value={{ loginWithRedirect, logout, myUser }}>
+      {children}
+    </UserContext.Provider>
   )
 }
 export default UserState
