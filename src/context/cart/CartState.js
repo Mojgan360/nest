@@ -1,7 +1,12 @@
 import React, { useReducer, useEffect } from 'react'
 import CartContext from './cartContext'
 import cartReducer from './cartReducer'
-import { ADD_TO_CART, REMOVE_CART_ITEM, CLEAR_CART } from '../../actions'
+import {
+  ADD_TO_CART,
+  REMOVE_CART_ITEM,
+  CLEAR_CART,
+  TOGGLE_CART_ITEM_AMOUNT,
+} from '../../actions'
 
 const getLocalStorage = () => {
   let cart = localStorage.getItem('cart')
@@ -26,6 +31,7 @@ const CartState = ({ children }) => {
   }
   const toggleAmount = (id, value) => {
     console.log(id, value)
+    dispatch({ type: TOGGLE_CART_ITEM_AMOUNT })
   }
   const removeItem = (id) => {
     dispatch({ type: REMOVE_CART_ITEM, payload: id })

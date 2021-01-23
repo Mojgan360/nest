@@ -1,4 +1,9 @@
-import { ADD_TO_CART, REMOVE_CART_ITEM, CLEAR_CART } from '../../actions'
+import {
+  ADD_TO_CART,
+  REMOVE_CART_ITEM,
+  CLEAR_CART,
+  TOGGLE_CART_ITEM_AMOUNT,
+} from '../../actions'
 
 const cartReducer = (state, action) => {
   if (action.type === ADD_TO_CART) {
@@ -38,6 +43,9 @@ const cartReducer = (state, action) => {
   }
   if (action.type === CLEAR_CART) {
     return { ...state, cart: [] }
+  }
+  if (action.type === TOGGLE_CART_ITEM_AMOUNT) {
+    return { ...state }
   }
   throw new Error(`No Matching "${action.type}" - action type`)
 }
