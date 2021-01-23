@@ -7,15 +7,16 @@ import {
   Cart,
   Error,
   CheckoutPage,
+  PrivateRoute,
 } from './pages'
 import { Navbar, Sidebar, Footer } from './components'
-import Alert from './components/Alert'
+// import Alert from './components/Alert'
 
 function App() {
   return (
     <Router>
       <Navbar />
-      <Alert />
+      {/* <Alert /> */}
       <Sidebar />
       <Switch>
         <Route exact path='/'>
@@ -30,9 +31,9 @@ function App() {
         <Route exact path='/about'>
           <About />
         </Route>
-        <Route exact path='/checkout'>
+        <PrivateRoute exact path='/checkout'>
           <CheckoutPage />
-        </Route>
+        </PrivateRoute>
         <Route exact path='/cart'>
           <Cart />
         </Route>
@@ -46,8 +47,3 @@ function App() {
 }
 
 export default App
-// <Home />
-//   <Products />
-//   <SingleProduct />
-//   <About />
-//   <Error />

@@ -7,7 +7,6 @@ import AlertState from './context/alert/AlertState'
 import FilterState from './context/filter/FilterState'
 import CartState from './context/cart/CartState'
 import UserState from './context/user/UserState'
-
 import { Auth0Provider } from '@auth0/auth0-react'
 
 ReactDOM.render(
