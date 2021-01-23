@@ -1,15 +1,17 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { FaTimes } from 'react-icons/fa'
 import nestLogo from '../../assets/logo.svg'
-
 import { links } from '../../utils/constants'
 import CartButtons from '../CartButtons'
 import { useProductsContext } from '../../context/products_context'
+import UserContext from '../../context/user/userContext'
 
 const Sidebar = () => {
   const { isSidebarOpen, closeSidebar } = useProductsContext()
+  const userContext = useContext(UserContext)
+  const { myUser } = userContext
 
   return (
     <SidebarContainer>
@@ -32,9 +34,13 @@ const Sidebar = () => {
               </li>
             )
           })}
-          <li>
-            <Link to='/checkout'>'Checkout'</Link>
-          </li>
+          {myUser && (
+            <li>
+              <Link to='/checkout' onClick={closeSidebar}>
+                checkout
+              </Link>
+            </li>
+          )}
         </ul>
         <CartButtons />
       </aside>
