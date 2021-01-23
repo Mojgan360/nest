@@ -50,17 +50,25 @@ const cartReducer = (state, action) => {
     const tmpCart = state.cart.map((item) => {
       if (item.id === id) {
         if (value === 'inc') {
-          //code ...
+          let newAmount = item.amount + 1
+          if (newAmount > item.max) {
+            newAmount = item.max
+          }
+          return { ...item, amount: newAmount }
         }
         if (value === 'dec') {
-          //code...
+          let newAmount = item.amount - 1
+          if (newAmount < 1) {
+            newAmount = 1
+          }
+          return { ...item, amount: newAmount }
         }
       } else {
         return item
       }
     })
 
-    return { ...state, tmpCart }
+    return { ...state, cart: tmpCart }
   }
   throw new Error(`No Matching "${action.type}" - action type`)
 }
