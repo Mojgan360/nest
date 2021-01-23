@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import nestLogo from '../../assets/logo.svg'
 import { FaBars } from 'react-icons/fa'
@@ -6,9 +6,11 @@ import { Link } from 'react-router-dom'
 import { links } from '../../utils/constants'
 import CartButtons from '../CartButtons'
 import { useProductsContext } from '../../context/products_context'
-
+import UserContext from '../../context/user/userContext'
 const Navbar = () => {
   const { openSidebar } = useProductsContext()
+  const userContext = useContext(UserContext)
+  const { myUser } = userContext
   return (
     <NavContainer>
       <div className='nav-center'>
@@ -29,9 +31,11 @@ const Navbar = () => {
               </li>
             )
           })}
-          <li>
-            <Link to='/checkout'>'Checkout'</Link>
-          </li>
+          {myUser && (
+            <li>
+              <Link to='/checkout'>checkout</Link>
+            </li>
+          )}
         </ul>
         <CartButtons />
       </div>
