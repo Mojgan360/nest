@@ -12,9 +12,7 @@ const Hero = () => {
           design your <br />
           comfort zone
         </h1>
-        <h3 style={{ color: 'red' }}>
-          it is not yet finished and still working on it
-        </h3>
+
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam natus
           architecto ea perspiciatis, quo harum! Recusandae expedita corrupti

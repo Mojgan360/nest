@@ -8,6 +8,9 @@ const CheckoutPage = () => {
       <PageHero title='checkout' />
       <Wrapper className='page'>
         <h1>checkout here</h1>
+        <h3 style={{ color: 'red' }}>
+          it is not yet finished and still working on it
+        </h3>
       </Wrapper>
     </main>
   )
