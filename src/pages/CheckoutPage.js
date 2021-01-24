@@ -1,12 +1,12 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { PageHero } from '../components'
-import CartContext from '../context/cart/cartContext'
+// import CartContext from '../context/cart/cartContext'
 // import { Link } from 'react-router-dom'
 
 const CheckoutPage = () => {
-  const cartContext = useContext(CartContext)
-  const { cart } = cartContext
+  // const cartContext = useContext(CartContext)
+  // const { cart } = cartContext
   return (
     <main>
       <PageHero title='checkout' />
