@@ -1,7 +1,8 @@
-// /functions/hello-world.js
+// domain/.netlify/functions/create-payment-intent
+
 exports.handler = async function () {
   return {
     statusCode: 200,
-    body: 'Hello world!',
+    body: 'create-payment-intent!',
   }
 }
