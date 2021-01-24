@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
 import { loadStripe } from '@stripe/stripe-js'
 import {
@@ -20,6 +20,33 @@ const CheckoutForm = () => {
   const userContext = useContext(UserContext)
   const { cart, total_amount, shipping_fee, clearCart } = cartContext
   const { myUser } = userContext
+  const history = useHistory()
+  //Stripe staff
+  const [succeeded, setSucceeded] = useState(false)
+  const [error, setError] = useState(null)
+  const [processing, setProcessing] = useState('')
+  const [disabled, setDisabled] = useState(true)
+  const [clientSecret, setClientSecret] = useState('')
+  const stripe = useStripe()
+  const elements = useElements()
+
+  const cardStyle = {
+    style: {
+      base: {
+        color: '#32325d',
+        fontFamily: 'Arial, sans-serif',
+        fontSmoothing: 'antialiased',
+        fontSize: '16px',
+        '::placeholder': {
+          color: '#32325d',
+        },
+      },
+      invalid: {
+        color: '#fa755a',
+        iconColor: '#fa755a',
+      },
+    },
+  }
 
   return <h2>strip chekout...</h2>
 }
