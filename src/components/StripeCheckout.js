@@ -1,13 +1,34 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
+import { loadStripe } from '@stripe/stripe-js'
+import {
+  CardElement,
+  useStripe,
+  Elements,
+  useElements,
+} from '@stripe/react-stripe-js'
+import axios from 'axios'
+import CartContext from '../context/cart/cartContext'
+import UserContext from '../context/user/userContext'
+import { formatPrice } from '../utils/helpers'
+import { useHistory } from 'react-router-dom'
+
+const promise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY)
 
 const CheckoutForm = () => {
+  const cartContext = useContext(CartContext)
+  const userContext = useContext(UserContext)
+  const { cart, total_amount, shipping_fee, clearCart } = cartContext
+  const { myUser } = userContext
+
   return <h2>strip chekout...</h2>
 }
 const StripeCheckout = () => {
   return (
     <Wrapper>
-      <CheckoutForm />
+      <Elements stripe={promise}>
+        <CheckoutForm />
+      </Elements>
     </Wrapper>
   )
 }
