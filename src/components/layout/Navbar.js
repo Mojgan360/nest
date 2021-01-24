@@ -45,10 +45,11 @@ const Navbar = () => {
 }
 
 const NavContainer = styled.nav`
-  height: 5rem;
+  height: 6rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1;
 
   .nav-center {
     width: 90vw;

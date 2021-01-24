@@ -1,8 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="515" height="276" viewBox="0 0 515 276">
+<svg xmlns="http://www.w3.org/2000/svg" width="1077.5" height="433.75" viewBox="0 0 862 347">
   <defs>
     <style>
-      .cls-1 {
-        fill: #9185be;
+      .cls-1, .cls-4, .cls-5 {
+        fill: #5d4f92;
       }
 
       .cls-2 {
@@ -10,35 +10,32 @@
       }
 
       .cls-3 {
-        fill: #009fe3;
+        fill: #c80e61;
       }
 
       .cls-4 {
         font-size: 26.62px;
-      }
-
-      .cls-4, .cls-5 {
-        fill: #5d4f92;
-        font-family: a_GroticRough;
-        font-weight: 700;
+        font-family: "Arial Black";
       }
 
       .cls-5 {
         font-size: 24px;
+        font-family: a_GroticRough;
+        font-weight: 700;
       }
     </style>
   </defs>
-  <rect id="Rektangel_1" data-name="Rektangel 1" class="cls-1" x="46" y="48" width="35" height="36"/>
-  <rect id="Rektangel_2" data-name="Rektangel 2" class="cls-1" x="104" y="114" width="38" height="57"/>
-  <rect id="Rektangel_3" data-name="Rektangel 3" class="cls-1" x="183" y="49" width="30" height="30"/>
-  <rect id="Rektangel_5" data-name="Rektangel 5" class="cls-2" x="47" y="102" width="38" height="49"/>
-  <rect id="Rektangel_6" data-name="Rektangel 6" class="cls-2" x="119" y="49" width="30" height="29"/>
-  <rect id="Rektangel_7" data-name="Rektangel 7" class="cls-2" x="184" y="145" width="28" height="31"/>
-  <rect id="Rektangel_8" data-name="Rektangel 8" class="cls-2" x="88" y="194" width="50" height="21"/>
-  <rect id="Rektangel_9" data-name="Rektangel 9" class="cls-3" x="159" y="94" width="24" height="32"/>
-  <rect id="Rektangel_10" data-name="Rektangel 10" class="cls-3" x="46" y="181" width="18" height="34"/>
-  <rect id="Rektangel_11" data-name="Rektangel 11" class="cls-3" x="155" y="202" width="14" height="13"/>
-  <text id="NEST" class="cls-4" transform="translate(249.502 159.025) scale(2.254)">NEST</text>
-  <text id="STORE" class="cls-5" x="254.843" y="210.781">STORE</text>
-  <rect id="Rektangel_4" data-name="Rektangel 4" class="cls-1" x="191" y="193" width="21" height="23"/>
+  <rect id="Rektangel_1" data-name="Rektangel 1" class="cls-1" x="47" y="93" width="35" height="36"/>
+  <rect id="Rektangel_2" data-name="Rektangel 2" class="cls-1" x="105" y="159" width="38" height="57"/>
+  <rect id="Rektangel_3" data-name="Rektangel 3" class="cls-1" x="184" y="94" width="30" height="30"/>
+  <rect id="Rektangel_5" data-name="Rektangel 5" class="cls-2" x="48" y="147" width="38" height="49"/>
+  <rect id="Rektangel_6" data-name="Rektangel 6" class="cls-2" x="120" y="94" width="30" height="29"/>
+  <rect id="Rektangel_7" data-name="Rektangel 7" class="cls-2" x="185" y="190" width="28" height="31"/>
+  <rect id="Rektangel_8" data-name="Rektangel 8" class="cls-2" x="89" y="239" width="50" height="21"/>
+  <rect id="Rektangel_9" data-name="Rektangel 9" class="cls-3" x="160" y="139" width="24" height="32"/>
+  <rect id="Rektangel_10" data-name="Rektangel 10" class="cls-3" x="47" y="226" width="18" height="34"/>
+  <rect id="Rektangel_11" data-name="Rektangel 11" class="cls-1" x="156" y="247" width="14" height="13"/>
+  <text id="N_E_S_T_kopiera_2" data-name="N E S T kopiera 2" class="cls-4" transform="matrix(4.29, 0, 0, 4.29, 311.279, 179.225)">N E S T</text>
+  <text id="STORE" class="cls-5" transform="translate(318.131 259.741) scale(1.851)">STORE</text>
+  <rect id="Rektangel_4" data-name="Rektangel 4" class="cls-3" x="192" y="238" width="21" height="23"/>
 </svg>
