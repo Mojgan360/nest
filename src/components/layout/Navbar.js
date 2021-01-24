@@ -7,6 +7,7 @@ import { links } from '../../utils/constants'
 import CartButtons from '../CartButtons'
 import { useProductsContext } from '../../context/products_context'
 import UserContext from '../../context/user/userContext'
+
 const Navbar = () => {
   const { openSidebar } = useProductsContext()
   const userContext = useContext(UserContext)
@@ -78,6 +79,7 @@ const NavContainer = styled.nav`
   .cart-btn-wrapper {
     display: none;
   }
+
   @media (min-width: 992px) {
     .nav-toggle {
       display: none;
