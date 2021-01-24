@@ -1,17 +1,17 @@
 import React from 'react'
 import styled from 'styled-components'
 import { PageHero } from '../components'
-// import CartContext from '../context/cart/cartContext'
-// import { Link } from 'react-router-dom'
+import CartContext from '../context/cart/cartContext'
+import { Link } from 'react-router-dom'
 
 const CheckoutPage = () => {
-  // const cartContext = useContext(CartContext)
-  // const { cart } = cartContext
+  const cartContext = React.useContext(CartContext)
+  const { cart } = cartContext
   return (
     <main>
       <PageHero title='checkout' />
       <Wrapper className='page'>
-        {/* {cart.length < 1 ? (
+        {cart.length < 1 ? (
           <div className='empty'>
             <h2>Your cart is empty</h2>
             <Link to='/products' className='btn'>
@@ -19,8 +19,10 @@ const CheckoutPage = () => {
             </Link>
           </div>
         ) : (
-          // <StripeCheckout />
-        )} */}
+          <Link href={`https://dashboard.stripe.com/test/payments`}>
+            Stripe dashboard
+          </Link>
+        )}
       </Wrapper>
     </main>
   )
