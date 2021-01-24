@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { loadStripe } from '@stripe/stripe-js'
 import {
@@ -30,6 +30,23 @@ const CheckoutForm = () => {
   const stripe = useStripe()
   const elements = useElements()
 
+  const createPaymentIntent = async () => {
+    try {
+      const { data } = await axios.post(
+        '/.netlify/functions/create-payment-intent',
+
+        JSON.stringify({ cart, shipping_fee, total_amount })
+      )
+      setClientSecret(data.clientSecret)
+    } catch (error) {
+      // console.log(error.response)
+    }
+  }
+  useEffect(() => {
+    createPaymentIntent()
+    // eslint-disable-next-line
+  }, [])
+
   const cardStyle = {
     style: {
       base: {
@@ -47,7 +64,12 @@ const CheckoutForm = () => {
       },
     },
   }
-
+  const handleChange = async (event) => {
+    // Listen for changes in the CardElement
+    // and display any errors as the customer types their card details
+    setDisabled(event.empty)
+    setError(event.error ? event.error.message : '')
+  }
   return <h2>strip chekout...</h2>
 }
 const StripeCheckout = () => {
