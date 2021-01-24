@@ -15,6 +15,7 @@ import ProductsList from './ProductsList'
 import Sort from './Sort'
 import Filters from './Filters'
 import CartContent from './CartContent'
+import StripeCheckout from './StripeCheckout'
 
 export {
   Navbar,
@@ -34,4 +35,5 @@ export {
   Sort,
   Filters,
   CartContent,
+  StripeCheckout,
 }
